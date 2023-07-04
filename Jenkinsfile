@@ -22,9 +22,10 @@ node {
       def resourceGroup = 'workshop24_group'
       def webAppName = 'workshop24'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: '63y8Q~L1MKHBUZ9u2dOwFfNF4-Ncti-KlzvcfcMz', usernameVariable: 'de8134c7-c831-45e7-a28e-49e0fa8a0068')]) {
+    withCredentials([usernamePassword(credentialsId: 'workshop', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
        sh '''
-          az login --service-principal -u $de8134c7-c831-45e7-a28e-49e0fa8a0068 -p $63y8Q~L1MKHBUZ9u2dOwFfNF4-Ncti-KlzvcfcMz -t $5f3426ec-85cf-46fb-a173-65769088cd2e
+          az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID
+          az account set -s $AZURE_SUBSCRIPTION_ID
         '''
       }
       // get publish settings
