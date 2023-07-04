@@ -22,7 +22,7 @@ node {
       def resourceGroup = 'workshop24_group'
       def webAppName = 'workshop24'
       // login Azure
-      withCredentials([usernamePassword(credentialsId: 'workshop', passwordVariable: '63y8Q~L1MKHBUZ9u2dOwFfNF4-Ncti-KlzvcfcMz', usernameVariable: 'de8134c7-c831-45e7-a28e-49e0fa8a0068')]) {
+      withCredentials([usernamePassword(credentialsId: 'AzureServicePrincipal', passwordVariable: '63y8Q~L1MKHBUZ9u2dOwFfNF4-Ncti-KlzvcfcMz', usernameVariable: 'de8134c7-c831-45e7-a28e-49e0fa8a0068')]) {
        sh '''
           az login --service-principal -u $de8134c7-c831-45e7-a28e-49e0fa8a0068 -p $63y8Q~L1MKHBUZ9u2dOwFfNF4-Ncti-KlzvcfcMz -t $5f3426ec-85cf-46fb-a173-65769088cd2e
         '''
